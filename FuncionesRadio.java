@@ -69,7 +69,7 @@ public class FuncionesRadio implements RadioInterface{
 		// TODO Auto-generated method stub
 		final int TIME_VISIBLE = 3000;
 		
-		JOptionPane pane = new JOptionPane("Sintonizando la emisora guardada...", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane pane = new JOptionPane("Sintonizando la emisora guardada. Por favor espere unos segundos...", JOptionPane.INFORMATION_MESSAGE);
         JDialog dialog = pane.createDialog(null, "Sintonizando. Por favor espere...");
         dialog.setModal(false);
         dialog.setVisible(true);
