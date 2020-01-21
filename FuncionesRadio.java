@@ -20,7 +20,7 @@ public class FuncionesRadio implements RadioInterface{
 	@Override
 	public String estacionActual() {
 		// TODO Auto-generated method stub
-		String actual = "La estaciÃ³n actual la puede consultar en su pantalla. La estacion guardada se mostrara en grande al "
+		String actual = "La estación actual la puede consultar en su pantalla. La estacion guardada se mostrara en grande al "
 				+ "seleccionar uno de los 12 botones.";
 		return actual;
 	}
@@ -55,9 +55,9 @@ public class FuncionesRadio implements RadioInterface{
 	public void guardar(int boton) {
 		// TODO Auto-generated method stub
 		if(boton < 200) {
-			JOptionPane.showMessageDialog(null, "Guardado exitosamente. Puede guardar hasta 12 emisoras FM distintas!");
+			JOptionPane.showMessageDialog(null, "Puede guardar hasta 12 emisoras FM distintas!");
 		}else if (boton > 200){
-			JOptionPane.showMessageDialog(null, "Guardado exitosamente. Puede guardar hasta 12 emisoras AM distintas!");
+			JOptionPane.showMessageDialog(null, "Puede guardar hasta 12 emisoras AM distintas!");
 		}else {
 			JOptionPane.showMessageDialog(null, "Puede guardar hasta 12 emisoras AM y 12 emisoras FM distintas!");
 		}
