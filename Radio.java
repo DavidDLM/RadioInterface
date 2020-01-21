@@ -26,6 +26,9 @@ public class Radio extends JFrame {
 	 * Create the frame.
 	 */
 	public Radio() {
+		
+		FuncionesRadio miRadio = new FuncionesRadio();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 607, 269);
 		contentPane = new JPanel();
@@ -90,11 +93,7 @@ public class Radio extends JFrame {
 		buttonGroup.add(rdbtnAm);
 		rdbtnAm.setBounds(10, 46, 62, 23);
 		contentPane.add(rdbtnAm);
-		
-		
-		
-		
-		
+				
 		JLabel lblEstacion = new JLabel("Estacion:");
 		lblEstacion.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblEstacion.setBounds(175, 71, 132, 19);
@@ -121,6 +120,12 @@ public class Radio extends JFrame {
 		btnGuardar.setBounds(394, 112, 89, 23);
 		contentPane.add(btnGuardar);
 		
+		JButton btnAyuda = new JButton("Ayuda");
+		btnAyuda.setBounds(493, 46, 89, 23);
+		contentPane.add(btnAyuda);
+		
+		
+		//Esta apagado
 		btnApagado.setEnabled(false);
 		btn1.setEnabled(false);
 		btn2.setEnabled(false);
@@ -138,12 +143,15 @@ public class Radio extends JFrame {
 		rdbtnFm.setEnabled(false);
 		spinner.setEnabled(false);
 		btnGuardar.setEnabled(false);
-		
+		btnAyuda.setEnabled(false);
+				
 
 		btnOn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnOn.isEnabled()){
-
+					
+					miRadio.onOff();
+					
 					btnApagado.setEnabled(true);
 					btn1.setEnabled(true);
 					btn2.setEnabled(true);
@@ -163,6 +171,13 @@ public class Radio extends JFrame {
 					btnOn.setEnabled(false);
 					rdbtnFm.setSelected(true);
 					btnGuardar.setEnabled(true);
+					btnAyuda.setEnabled(true);
+					
+					btnAyuda.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							JOptionPane.showMessageDialog(null, miRadio.estacionActual());
+						}
+					});
 					
 					if (rdbtnAm.isSelected()) {
 						rdbtnFm.setSelected(false);
@@ -179,6 +194,7 @@ public class Radio extends JFrame {
 					    @Override
 					    public void actionPerformed(ActionEvent e)
 					    {
+					    	miRadio.cambiarFrecuencia();
 					    	spinner.setModel(new SpinnerNumberModel(530,530,1610,10));					
 					    	}
 					});
@@ -189,6 +205,7 @@ public class Radio extends JFrame {
 					    @Override
 					    public void actionPerformed(ActionEvent e)
 					    {
+					    	miRadio.cambiarFrecuencia();
 					    	spinner.setModel(new SpinnerNumberModel(87.9, 87.9, 107.9, 0.2));
 					    	}
 					});
@@ -199,12 +216,14 @@ public class Radio extends JFrame {
 						public void actionPerformed(ActionEvent e) {
 							if(btnGuardar.isEnabled()) {
 								if (rdbtnAm.isSelected()) {
-									JOptionPane.showMessageDialog(null, "Puede guardar hasta 12 emisoras AM distintas!");
 									String emisora1 = String.valueOf(spinner.getValue());
+									miRadio.guardar(Integer.parseInt(emisora1));
 									FuncionesRadio.listaAM.add(emisora1);
+									
 								}else if (rdbtnFm.isSelected()) {
-									JOptionPane.showMessageDialog(null, "Puede guardar hasta 12 emisoras FM distintas!");
 									String emisora1 = String.valueOf(spinner.getValue());
+									int valor = (int) Math.round(Double.parseDouble(emisora1));
+									miRadio.guardar(valor);
 									FuncionesRadio.listaFM.add(emisora1);
 								}
 								
@@ -219,6 +238,7 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaAM.isEmpty()==true) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaAM.isEmpty()==false) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaAM.get(0)));
 								}
 								
@@ -226,9 +246,12 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaFM.isEmpty()==true) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaFM.isEmpty()==false) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaFM.get(0)));
 								}
 							}
+							
+							
 						}
 					});
 					
@@ -239,6 +262,7 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaAM.size()<=1) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaAM.size()>=2) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaAM.get(1)));
 								}
 								
@@ -246,9 +270,11 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaFM.size()<=1) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaFM.size()>=2) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaFM.get(1)));
 								}
 							}
+							
 						}
 					});
 					
@@ -259,6 +285,7 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaAM.size()<=2) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaAM.size()>=2) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaAM.get(2)));
 								}
 								
@@ -266,9 +293,11 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaFM.size()<=2) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaFM.size()>=2) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaFM.get(2)));
 								}
 							}
+							
 						}
 					});
 					
@@ -280,6 +309,7 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaAM.size()<=3) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaAM.size()>=3) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaAM.get(3)));
 								}
 								
@@ -287,9 +317,12 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaFM.size()<=3) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaFM.size()>=3) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaFM.get(3)));
 								}
 							}
+							
+							
 						}
 					});
 					
@@ -301,6 +334,7 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaAM.size()<=4) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaAM.size()>=4) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaAM.get(4)));
 								}
 								
@@ -308,9 +342,12 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaFM.size()<=4) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaFM.size()>=4) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaFM.get(4)));
 								}
 							}
+							
+							
 						}
 					});
 					
@@ -322,6 +359,7 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaAM.size()<=5) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaAM.size()>=5) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaAM.get(5)));
 								}
 								
@@ -329,9 +367,12 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaFM.size()<=5) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaFM.size()>=5) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaFM.get(5)));
 								}
 							}
+							
+							
 						}
 					});
 					
@@ -343,6 +384,7 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaAM.size()<=6) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaAM.size()>=6) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaAM.get(6)));
 								}
 								
@@ -350,9 +392,12 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaFM.size()<=6) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaFM.size()>=6) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaFM.get(6)));
 								}
 							}
+							
+							
 						}
 					});
 					
@@ -364,6 +409,7 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaAM.size()<=7) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaAM.size()>=7) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaAM.get(7)));
 								}
 								
@@ -371,9 +417,12 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaFM.size()<=7) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaFM.size()>=7) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaFM.get(7)));
 								}
 							}
+							
+							
 						}
 					});
 					
@@ -384,6 +433,7 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaAM.size()<=8) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaAM.size()>=8) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaAM.get(8)));
 								}
 								
@@ -391,9 +441,12 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaFM.size()<=8) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaFM.size()>=8) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaFM.get(8)));
 								}
 							}
+							
+					
 						}
 					});
 					
@@ -404,6 +457,7 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaAM.size()<=9) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaAM.size()>=9) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaAM.get(9)));
 								}
 								
@@ -411,9 +465,12 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaFM.size()<=9) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaFM.size()>=9) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaFM.get(9)));
 								}
 							}
+							
+						
 						}
 					});
 					
@@ -424,6 +481,7 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaAM.size()<=10) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaAM.size()>=10) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaAM.get(10)));
 								}
 								
@@ -431,9 +489,12 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaFM.size()<=10) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaFM.size()>=10) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaFM.get(10)));
 								}
 							}
+							
+							
 						}
 					});
 					
@@ -444,6 +505,7 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaAM.size()<=11) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaAM.size()>=11) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaAM.get(11)));
 								}
 								
@@ -451,14 +513,14 @@ public class Radio extends JFrame {
 								if (FuncionesRadio.listaFM.size()<=11) {
 									JOptionPane.showMessageDialog(null, "No tiene emisoras guardadas!");
 								}else if (FuncionesRadio.listaFM.size()>=11) {
+									miRadio.seleccionarEmisora(1);
 									lblEstacionActual.setText(String.valueOf(FuncionesRadio.listaFM.get(11)));
 								}
-							}
+							}	
+							
 						}
 					});
-					
-					
-					
+							
 				}
 				
 			}
@@ -486,6 +548,7 @@ public class Radio extends JFrame {
 					spinner.setEnabled(false);
 					btnOn.setEnabled(true);
 					btnGuardar.setEnabled(false);
+					btnAyuda.setEnabled(false);
 					
 				}
 			}
