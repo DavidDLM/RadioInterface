@@ -1,3 +1,15 @@
+/**
+ *  JavaDoc comment
+ */
+
+/**
+ * @author Mario David de Leon Muralles
+ * @author Edman Trinidad Cota Silvestre
+ * @version 1.0.0 
+ *
+ */
+
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -16,6 +28,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.ButtonGroup;
+import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class Radio extends JFrame {
 
@@ -30,98 +44,121 @@ public class Radio extends JFrame {
 		FuncionesRadio miRadio = new FuncionesRadio();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 607, 269);
+		setSize(767, 410);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(251, 251, 251));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JButton btn1 = new JButton("1");
-		btn1.setBounds(10, 159, 89, 23);
+		btn1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn1.setBounds(85, 265, 89, 30);
 		contentPane.add(btn1);
 		
 		JButton btn2 = new JButton("2");
-		btn2.setBounds(105, 159, 89, 23);
+		btn2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn2.setBounds(180, 265, 89, 30);
 		contentPane.add(btn2);
 		
 		JButton btn3 = new JButton("3");
-		btn3.setBounds(200, 159, 89, 23);
+		btn3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn3.setBounds(275, 265, 89, 30);
 		contentPane.add(btn3);
 		
 		JButton btn4 = new JButton("4");
-		btn4.setBounds(295, 159, 89, 23);
+		btn4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn4.setBounds(370, 265, 89, 30);
 		contentPane.add(btn4);
 		
 		JButton btn5 = new JButton("5");
-		btn5.setBounds(394, 159, 89, 23);
+		btn5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn5.setBounds(469, 265, 89, 30);
 		contentPane.add(btn5);
 		
 		JButton btn6 = new JButton("6");
-		btn6.setBounds(493, 159, 89, 23);
+		btn6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn6.setBounds(568, 265, 89, 30);
 		contentPane.add(btn6);
 		
 		JButton btn7 = new JButton("7");
-		btn7.setBounds(10, 193, 89, 23);
+		btn7.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn7.setBounds(85, 301, 89, 30);
 		contentPane.add(btn7);
 		
 		JButton btn8 = new JButton("8");
-		btn8.setBounds(105, 193, 89, 23);
+		btn8.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn8.setBounds(180, 301, 89, 30);
 		contentPane.add(btn8);
 		
 		JButton btn9 = new JButton("9");
-		btn9.setBounds(200, 193, 89, 23);
+		btn9.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn9.setBounds(275, 301, 89, 30);
 		contentPane.add(btn9);
 		
 		JButton btn10 = new JButton("10");
-		btn10.setBounds(295, 193, 89, 23);
+		btn10.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn10.setBounds(370, 301, 89, 30);
 		contentPane.add(btn10);
 		
 		JButton btn11 = new JButton("11");
-		btn11.setBounds(394, 193, 89, 23);
+		btn11.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn11.setBounds(469, 301, 89, 30);
 		contentPane.add(btn11);
 		
 		JButton btn12 = new JButton("12");
-		btn12.setBounds(493, 193, 89, 23);
+		btn12.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn12.setBounds(568, 301, 89, 30);
 		contentPane.add(btn12);
 		
 		JRadioButton rdbtnFm = new JRadioButton("FM");
+		rdbtnFm.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		rdbtnFm.setBackground(new Color(251, 251, 251));
 		buttonGroup.add(rdbtnFm);
-		rdbtnFm.setBounds(10, 72, 89, 23);
+		rdbtnFm.setBounds(85, 125, 89, 23);
 		contentPane.add(rdbtnFm);
 		
 		JRadioButton rdbtnAm = new JRadioButton("AM");
+		rdbtnAm.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		rdbtnAm.setBackground(new Color(251, 251, 251));
 		buttonGroup.add(rdbtnAm);
-		rdbtnAm.setBounds(10, 46, 62, 23);
+		rdbtnAm.setBounds(85, 99, 62, 23);
 		contentPane.add(rdbtnAm);
 				
 		JLabel lblEstacion = new JLabel("Estacion:");
 		lblEstacion.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblEstacion.setBounds(175, 71, 132, 19);
+		lblEstacion.setBounds(250, 155, 132, 19);
 		contentPane.add(lblEstacion);
 		
 		JLabel lblEstacionActual = new JLabel("");
 		lblEstacionActual.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblEstacionActual.setBounds(317, 72, 100, 19);
+		lblEstacionActual.setBounds(392, 156, 100, 19);
 		contentPane.add(lblEstacionActual);
 		
 		JButton btnOn = new JButton("Encender");
-		btnOn.setBounds(394, 11, 89, 23);
+		btnOn.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnOn.setBounds(469, 64, 89, 30);
 		contentPane.add(btnOn);
 		
 		JButton btnApagado = new JButton("Apagar");
-		btnApagado.setBounds(493, 11, 89, 23);
+		btnApagado.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnApagado.setBounds(568, 64, 89, 30);
 		contentPane.add(btnApagado);
 		
 		JSpinner spinner = new JSpinner();
-		spinner.setBounds(220, 113, 164, 20);
+		spinner.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		spinner.setBounds(295, 197, 164, 30);
 		contentPane.add(spinner);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(394, 112, 89, 23);
+		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnGuardar.setBounds(469, 196, 89, 30);
 		contentPane.add(btnGuardar);
 		
 		JButton btnAyuda = new JButton("Ayuda");
-		btnAyuda.setBounds(493, 46, 89, 23);
+		btnAyuda.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAyuda.setBounds(568, 99, 89, 30);
 		contentPane.add(btnAyuda);
 		
 		
@@ -144,8 +181,15 @@ public class Radio extends JFrame {
 		spinner.setEnabled(false);
 		btnGuardar.setEnabled(false);
 		btnAyuda.setEnabled(false);
+		
+		JLabel lblNewLabel = new JLabel("Radio UVG");
+		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(0, 11, 751, 30);
+		contentPane.add(lblNewLabel);
 				
-
+		
+		// Los botones se habilitan al momento de encender la radio.
 		btnOn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnOn.isEnabled()){
@@ -173,16 +217,19 @@ public class Radio extends JFrame {
 					btnGuardar.setEnabled(true);
 					btnAyuda.setEnabled(true);
 					
+					// Muestra en pantalla un dialogo de soporte
 					btnAyuda.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							JOptionPane.showMessageDialog(null, miRadio.estacionActual());
 						}
 					});
 					
+					// Verifica si el boton de AM esta seleccionado, para agregar los datos del spinner
 					if (rdbtnAm.isSelected()) {
 						rdbtnFm.setSelected(false);
 						spinner.setModel(new SpinnerNumberModel(530,530,1610,10));
 						
+					// Verifica si el boton de FM esta seleccionado, para agregar los datos del spinner
 					}else if (rdbtnFm.isSelected()) {
 						rdbtnAm.setSelected(false);
 						spinner.setModel(new SpinnerNumberModel(87.9, 87.9, 107.9, 0.2));	
@@ -526,6 +573,7 @@ public class Radio extends JFrame {
 			}
 		});
 		
+		// Los botones se deshabilitan al momento de apagar la radio.
 		btnApagado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnApagado.isEnabled()){
