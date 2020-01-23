@@ -20,7 +20,7 @@ public class FuncionesRadio implements RadioInterface{
 	@Override
 	public String estacionActual() {
 		// TODO Auto-generated method stub
-		String actual = "La estación actual la puede consultar en su pantalla. La estacion guardada se mostrara en grande al "
+		String actual = "La estacion actual la puede consultar en su pantalla. La estacion guardada se mostrara en grande al "
 				+ "seleccionar uno de los 12 botones.";
 		return actual;
 	}
