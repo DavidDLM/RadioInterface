@@ -18,6 +18,9 @@ public class FuncionesRadioTest {
 	
 	@Test
 	public void testSeleccionarEmisora() {
+		
+		// Primer intento falla, porque regresa 4 y esta esperando 2
+		// Cambiar numero para verificar nuevamente
 		assertEquals("Checking size of List", 2, miRadio.listaAM.size());
 		assertEquals("Checking size of List", 2, miRadio.listaFM.size());
 		
@@ -34,7 +37,7 @@ public class FuncionesRadioTest {
 	@Test
 	public void testEstacionActual() {
 		
-		String expected = "La estación actual la puede consultar en su pantalla. La estacion guardada se mostrara en grande al "
+		String expected = "La estacion actual la puede consultar en su pantalla. La estacion guardada se mostrara en grande al "
 				+ "seleccionar uno de los 12 botones.";
         assertEquals(expected, miRadio.estacionActual());
 		
