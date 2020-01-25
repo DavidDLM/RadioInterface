@@ -13,9 +13,19 @@ import javax.swing.Timer;
 
 public class FuncionesRadio implements RadioInterface{
 	
+	private boolean estado;
 	static List<String> listaAM = new ArrayList<String>();
 	static List<String> listaFM = new ArrayList<String>();
 	//static List<Integer> listaBotones = new ArrayList<Integer>();
+	
+	
+	
+	public FuncionesRadio() {
+		
+		estado = false;
+
+	}
+	
 
 	@Override
 	public String estacionActual() {
@@ -28,13 +38,20 @@ public class FuncionesRadio implements RadioInterface{
 	@Override
 	public boolean estado() {
 		// TODO Auto-generated method stub
-		return false;
+		return estado;
 	}
 
 	@Override
 	public void onOff() {
 		// TODO Auto-generated method stub
-		JOptionPane.showMessageDialog(null, "Bienvenido!");
+		
+		if (estado == false) {
+			estado = true;
+			JOptionPane.showMessageDialog(null, "Bienvenido!");
+		}else if (estado == true) {
+			estado = false;
+			JOptionPane.showMessageDialog(null, "Hasta pronto!");
+		}
 		
 	}
 
