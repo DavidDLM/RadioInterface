@@ -579,6 +579,7 @@ public class Radio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnApagado.isEnabled()){
 					
+					miRadio.onOff();
 					btnApagado.setEnabled(false);
 					btn1.setEnabled(false);
 					btn2.setEnabled(false);
