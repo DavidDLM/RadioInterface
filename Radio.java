@@ -161,6 +161,7 @@ public class Radio extends JFrame {
 		btnAyuda.setBounds(568, 99, 89, 30);
 		contentPane.add(btnAyuda);
 		
+		spinner.setModel(new SpinnerNumberModel(87.9, 87.9, 107.9, 0.2));
 		
 		//Esta apagado
 		btnApagado.setEnabled(false);
@@ -216,6 +217,10 @@ public class Radio extends JFrame {
 					rdbtnFm.setSelected(true);
 					btnGuardar.setEnabled(true);
 					btnAyuda.setEnabled(true);
+					
+				}
+			}
+		});
 					
 					// Muestra en pantalla un dialogo de soporte
 					btnAyuda.addActionListener(new ActionListener() {
@@ -567,11 +572,7 @@ public class Radio extends JFrame {
 							
 						}
 					});
-							
-				}
-				
-			}
-		});
+
 		
 		// Los botones se deshabilitan al momento de apagar la radio.
 		btnApagado.addActionListener(new ActionListener() {
